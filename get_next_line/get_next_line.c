@@ -6,18 +6,18 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:59:50 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/02/27 18:20:48 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:48:32 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*fill_linesbuffer(int fd, char *rest, char *buffer);
+static char	*fill_linesbuffer(int fd, char *save, char *buffer);
 static char	*fixline(char *line);
 
 char	*get_next_line(int fd)
 {
-	static char	*rest;
+	static char	*save;
 	char		*line;
 	char		*buffer;
 
@@ -26,24 +26,24 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		free(rest);
+		free(save);
 		free(buffer);
-		rest = NULL;
+		save = NULL;
 		buffer = NULL;
 		return (NULL);
 	}
-	line = fill_linesbuffer(fd, rest, buffer);
+	line = fill_linesbuffer(fd, save, buffer);
 	free(buffer);
 	buffer = NULL;
 	if (!line)
 		return (NULL);
-	rest = fixline(line);
+	save = fixline(line);
 	return (line);
 }
 
 static char	*fixline(char *line_buffer)
 {
-	char	*rest;
+	char	*save;
 	ssize_t	i;
 
 	i = 0;
@@ -51,17 +51,17 @@ static char	*fixline(char *line_buffer)
 		i++;
 	if (line_buffer[i] == 0)
 		return (NULL);
-	rest = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - i);
-	if (*rest == 0)
+	save = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - i);
+	if (*save == 0)
 	{
-		free(rest);
-		rest = NULL;
+		free(save);
+		save = NULL;
 	}
 	line_buffer[i + 1] = 0;
-	return (rest);
+	return (save);
 }
 
-static char	*fill_linesbuffer(int fd, char *rest, char *buffer)
+static char	*fill_linesbuffer(int fd, char *save, char *buffer)
 {
 	ssize_t	readstatus;
 	char	*tmp;
@@ -75,17 +75,40 @@ static char	*fill_linesbuffer(int fd, char *rest, char *buffer)
 		else if (readstatus == 0)
 			break ;
 		buffer[readstatus] = '\0';
-		if (!rest)
+		if (!save)
 		{
-			rest = (char *)malloc(1);
-			rest[0] = '\0';
+			save = (char *)malloc(1);
+			save[0] = '\0';
 		}
-		tmp = rest;
-		rest = ft_strjoin(tmp, buffer);
+		tmp = save;
+		save = ft_strjoin(tmp, buffer);
 		free(tmp);
 		tmp = NULL;
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	return (rest);
+	return (save);
 }
+
+/*int main() {
+    char file[] = "text.txt";
+	int fd;
+    char *line;
+
+    fd = open(file, O_RDONLY);
+    if (fd == -1) {
+        return 1;
+    }
+
+    // Read lines from the file using get_next_line
+    //while (( != NULL) {
+		line = get_next_line(fd);
+        printf("Line: %s\n", line);
+		line = get_next_line(fd);
+        printf("Line: %s\n", line);
+        //free(line); // Free the memory allocated by get_next_line
+
+
+    close(fd); // Close the file descriptor
+    return 0;
+}*/
