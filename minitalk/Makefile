@@ -6,15 +6,15 @@
 #    By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/07 17:08:49 by mokutucu          #+#    #+#              #
-#    Updated: 2024/03/07 17:32:51 by mokutucu         ###   ########.fr        #
+#    Updated: 2024/03/11 15:24:30 by mokutucu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_CLIENT = client
 NAME_SERVER = server
-LIB	= src/libft.a
+LIB	= src/libft/libft.a
 
-SRC_CLIENT = src/client.c 
+SRC_CLIENT = src/client.c
 SRC_SERVER = src/server.c
 
 OBJ_CLIENT	= $(SRC_CLIENT:.c=.o)
@@ -27,13 +27,14 @@ INCLUDE = -I include
 
 all: $(NAME_CLIENT) $(NAME_SERVER)
 
-$(NAME_CLIENT): $(OBJ_CLIENT)
-		@make -C src/libft
+$(NAME_CLIENT): $(OBJ_CLIENT)	$(LIB)
 		$(CC) $(CFLAGS) $(OBJ_CLIENT) $(INCLUDE) $(LIB) -o $(NAME_CLIENT)
 
-$(NAME_SERVER): $(OBJ_SERVER)
-		@make -C src/libft
+$(NAME_SERVER): $(OBJ_SERVER)	$(LIB)
 		$(CC) $(CFLAGS) $(OBJ_SERVER) $(INCLUDE) $(LIB) -o $(NAME_SERVER)
+
+$(LIB):
+	@make -C src/libft
 
 clean:
 		@make clean -C src/libft
