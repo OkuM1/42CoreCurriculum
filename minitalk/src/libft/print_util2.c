@@ -6,13 +6,13 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:01:53 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/03/11 14:43:24 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:17:47 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	print_ptr(unsigned long long nbr)
+int	print_ptr(long nbr)
 {
 	int		count;
 	char	*symbols;

@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:17:05 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/03/11 15:09:02 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:18:16 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int					print_char(int c);
 int					print_str(char *s);
 int					print_digit(long nbr, int base, int yesoryes);
 int					print_unsigned(unsigned int num);
-int					print_ptr(unsigned long long nbr);
+int					print_ptr(long nbr);
 int					print_pointer(va_list ap);
 
 #endif
