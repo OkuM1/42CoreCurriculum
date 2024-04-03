@@ -13,13 +13,14 @@ This repository contains various projects completed as part of the curriculum at
 1. [**libft**](update)
     - **Language**: C
     - **Description**: Re-code useful C functions like split or join using only `malloc`, `free`, and `write`.
+    - Bonus includes functions working with data structures such as linked lists. Continually expanded..
 2. [**born2beroot**](update)
     - **Language**: Unix
     - **Description**: Create a virtual machine under specific instructions. Setting up a minimal Debian server implementing strict rules such as strong password policy, UFW firewall, SSH, etc. A Bash script is provided in the repository that had to be broadcasted to all users every 10 minutes using crontab and wall.
 
 3. [**get_next_line**](update)
     - **Language**: C
-    - **Description**: Write a function which returns a line read from a file descriptor. Bonus includes handling multiple file descriptors without losing the reading thread on each of them.
+    - **Description**: Write a function which returns a line read from a file descriptor.
 
 4. [**ft_printf**](update)
     - **Language**: C
