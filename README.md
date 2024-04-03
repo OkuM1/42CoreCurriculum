@@ -25,4 +25,7 @@ This repository contains various projects completed as part of the curriculum at
 1. [**libft**](update)
     - **Language**: C
     - **Description**: Re-code useful C functions like split or join using only `malloc`, `free`, and `write`.
-
+  
+0. [**C-Reloaded**]
+    - **Language**: C
+    - **Description**: Reviewing most functions and exercises done in the Piscine (a probationary time at the school before starting the core curriculum).
