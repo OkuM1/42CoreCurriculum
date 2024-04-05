@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: mokutucu <mokutucu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 19:12:45 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/03/11 14:45:01 by mokutucu         ###   ########.fr       */
+/*   Created: 2023/11/16 14:59:22 by mokutucu          #+#    #+#             */
+/*   Updated: 2023/11/16 17:50:05 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	unsigned int	i;
+	char			*res;
+	char			cc;
 
+	cc = (char) c;
+	res = NULL;
 	i = 0;
 	while (s[i])
+	{
+		if (s[i] == cc)
+			res = (char *) &s[i];
 		i++;
-	return (i);
+	}
+	if (s[i] == cc)
+		res = (char *) &s[i];
+	return (res);
 }

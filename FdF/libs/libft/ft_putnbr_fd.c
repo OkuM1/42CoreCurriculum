@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 19:12:45 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/03/11 14:45:01 by mokutucu         ###   ########.fr       */
+/*   Created: 2023/11/22 16:13:00 by mokutucu          #+#    #+#             */
+/*   Updated: 2023/11/22 16:21:51 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	long int	digit;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	digit = 0;
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n < 0)
+	{
+		write (fd, "-", 1);
+		n *= -1;
+		ft_putnbr_fd(n, fd);
+	}
+	else
+	{
+		if (n > 9)
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
+		}
+		else
+		{
+			digit = n + 48;
+			write(fd, &digit, 1);
+		}
+	}
 }

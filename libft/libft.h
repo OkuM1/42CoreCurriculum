@@ -6,17 +6,23 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:17:05 by mokutucu          #+#    #+#             */
-/*   Updated: 2023/11/23 15:32:53 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:18:16 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <ctype.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -70,5 +76,18 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+char				*gft_substr(char const *s, unsigned int start, size_t len);
+char				*gft_strjoin(char const *s1, char const *s2);
+char				*gft_strchr(const char *s, int c);
+char				*gft_strdup(const char *s1);
+char				*get_next_line(int fd);
+int					print_format(char sign, va_list args);
+int					ft_printf(const char *format, ...);
+int					print_char(int c);
+int					print_str(char *s);
+int					print_digit(long nbr, int base, int yesoryes);
+int					print_unsigned(unsigned int num);
+int					print_ptr(long nbr);
+int					print_pointer(va_list ap);
 
 #endif
