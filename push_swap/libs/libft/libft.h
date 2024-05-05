@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:17:05 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/04/02 14:31:00 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:37:06 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				data;
 	struct s_list	*next;
-}					t_list;
+	struct s_list	*pre;
+}	t_list;
 
 void		*ft_memset(void *dest, int c, size_t n);
 void		ft_bzero(void *b, size_t n);

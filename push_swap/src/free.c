@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/05 15:21:44 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/05/05 15:30:03 by mokutucu         ###   ########.fr       */
+/*   Created: 2024/05/05 15:21:26 by mokutucu          #+#    #+#             */
+/*   Updated: 2024/05/05 15:37:51 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_deallocate(t_stack *s)
+void	free_split(char **numbers)
+{
+	size_t	i;
+
+	if (!numbers)
+		return ;
+	i = 0;
+	while (numbers[i])
+	{
+		free(numbers[i]);
+		i++;
+	}
+	free(numbers);
+}
+
+void	ft_free_init(t_stack *s)
 {
 	t_list	*temp;
 	t_list	*next_node;
@@ -28,25 +43,5 @@ void	ft_deallocate(t_stack *s)
 	}
 	s->a_size = 0;
 	s->head_a = NULL;
-	free(s->sorted);
-}
-
-int	main(int ac, char **av)
-{
-	t_stack		sa;
-
-	if (ac == 1)
-		exit(0);
-	if (!ft_check_error(ac, av))
-		ft_putstr_fd("Error\n", 2);
-	ft_stack_init(&sa, ac, av);
-	if (sa.a_size == 3)
-		tiny_sort(&sa);
-	else if (sa.a_size == 4)
-		four_sort(&sa);
-	else if (sa.a_size == 5)
-		five_sort(&sa);
-	else
-		radix_sort(&sa);
-	ft_deallocate(&sa);
+	exit(0);
 }
