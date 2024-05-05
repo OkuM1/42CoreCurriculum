@@ -6,13 +6,13 @@
 #    By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 15:21:52 by mokutucu          #+#    #+#              #
-#    Updated: 2024/05/05 15:40:12 by mokutucu         ###   ########.fr        #
+#    Updated: 2024/05/05 15:44:52 by mokutucu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 LIBDIR	= libs/libft/libft.a
-CC		= gcc
+CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 SRC_DIR = src
