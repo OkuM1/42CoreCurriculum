@@ -30,3 +30,7 @@ This repository contains various projects completed as part of the curriculum at
 5. [**FdF** 🕹️](update)
     - **Language**: C
     - **Description**: FdF (Fil de Fer) is a graphical project aiming to create a simple 3D wireframe renderer. The project's objective is to read a map file containing coordinates and heights and generate a graphical representation of the terrain.
+
+fract-ol
+    Language: C
+    Description: Develop a fractal exploration program that renders various fractals such as the Mandelbrot set and Julia sets. The project involves creating interactive graphics that allow users to zoom and pan across the fractals, enhancing understanding of complex mathematical structures through visual representation.
