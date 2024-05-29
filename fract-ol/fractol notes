@@ -1,0 +1,23 @@
+Initialization: At the beginning of the function, several variables are initialized:
+
+    vars->coord.zx and vars->coord.zy are set to 0, representing the initial complex number z=0z=0.
+    vars->coord.xx and vars->coord.yy are set to 0, representing the squared values of the real and imaginary parts of zz, respectively.
+    vars->coord.temp is set to 0, which will hold a temporary value during calculations.
+    vars->coord.iter is set to 0, representing the iteration count.
+
+Iteration: The function then enters a loop where it iterates until either the magnitude squared of the complex number zz exceeds 4 or the maximum iteration count (MAX_ITER) is reached.
+
+Mandelbrot Set Equation: Within each iteration, it applies the Mandelbrot set iteration formula:
+z←z2+c
+z←z2+c
+
+where zz is a complex number, and cc is the coordinates of a point in the complex plane (represented here as vars->coord.x_viewp and vars->coord.y_viewp).
+
+julia constant +c 
+    In the Mandelbrot set calculation, zz starts at 0 for each pixel.
+    In the Julia set calculation, zz starts at the coordinates of the current pixel being evaluated.
+    
+    
+  change alpha val to 0 to transparency
+  clear previous image when zoom
+  
