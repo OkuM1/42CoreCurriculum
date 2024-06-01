@@ -2,7 +2,7 @@
 
 ## Projects Overview
 
-This repository contains various projects completed as part of the curriculum at [42](https://www.42.fr/), a coding university. Each project demonstrates different skills and knowledge in various programming languages and technologies.
+This repository contains projects completed and built by myself at [42](https://www.42.fr/), a coding university. Each project demonstrates different skills and knowledge in various programming languages and technologies.
 
 ### Project List
 0. [**C-Piscine/Reloaded**]
