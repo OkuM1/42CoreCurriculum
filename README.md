@@ -6,8 +6,8 @@ This repository contains projects completed and built by myself at [42](https://
 
 ### Project List
 0. [**C-Piscine/Reloaded**]
-    - **Language**: C
-    - **Description**: Reviewing most functions and exercises done in the Piscine (a probationary time at the school before starting the core curriculum).
+    - **Language**: C, Shell
+    - **Description**:  A intense one month probationary period similar to an entrance exam. 
                         Getting familiar with shell and C and the norminette system which emphasizes clean coding habits.
 
 1. [**libft**]
