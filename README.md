@@ -27,7 +27,7 @@ This repository contains various projects completed as part of the curriculum at
     - **Description**: Reproduce basic functioning of the printf function with certain flags implemented: `%c`, `%s`, `%i`, `%d`, `%u`, `%x`, `%X`, `%p`, `%%`.
 
 
-5. [**FdF** 🕹️]
+5. [**FdF**]
     - **Language**: C
     - **Description**: FdF (Fil de Fer) is a graphical project aiming to create a simple 3D wireframe renderer. The project's objective is to read a map file containing coordinates and heights and generate a graphical representation of the terrain.
 
