@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:17:05 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/03/12 15:18:16 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:24:17 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #  define BUFFER_SIZE 1
 # endif
 
+# include <stddef.h>
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -89,5 +90,6 @@ int					print_digit(long nbr, int base, int yesoryes);
 int					print_unsigned(unsigned int num);
 int					print_ptr(long nbr);
 int					print_pointer(va_list ap);
+char				*ft_strncpy(char *dst, const char *src, size_t n);
 
 #endif

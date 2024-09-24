@@ -34,3 +34,4 @@ This repository contains projects completed and built by myself at [42](https://
 6. [**fract-ol**]
     - **Language**: C
     - **Description**: Develop a fractal exploration program that renders various fractals such as the Mandelbrot set and Julia sets. The project involves creating interactive graphics that allow users to zoom and pan across the fractals, enhancing understanding of complex mathematical structures through visual representation.
+
