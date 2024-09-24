@@ -35,3 +35,10 @@ This repository contains projects completed and built by myself at [42](https://
     - **Language**: C
     - **Description**: Develop a fractal exploration program that renders various fractals such as the Mandelbrot set and Julia sets. The project involves creating interactive graphics that allow users to zoom and pan across the fractals, enhancing understanding of complex mathematical structures through visual representation.
 
+7. [**push_swap**]
+    - **Language**: C
+    - **Description**: Implement a sorting algorithm using a stack-based approach. The goal is to sort a list of integers with the least number of operations using two stacks and a predefined set of operations.
+
+8. [**minishell**]
+    - **Language**: C
+    - **Description**: Create a shell that can execute basic commands, handle redirections, and manage processes. The project involves parsing user input, executing commands, and implementing built-in functions like `cd`, `echo`, and `exit`.
