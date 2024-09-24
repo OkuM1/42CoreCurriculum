@@ -1,62 +1,32 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <pthread.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 17:44:10 by mokutucu          #+#    #+#             */
+/*   Updated: 2024/09/24 18:07:45 by mokutucu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// Assuming these are declared globally
-pthread_mutex_t mutex;
-int balance = 0;
+#include "../includes/philo.h"
 
-void* deposit(void* amount) {
-    int deposit_amount = *(int*)amount;
-
-    // Lock the mutex before updating the balance
-    pthread_mutex_lock(&mutex);
-
-    // Critical section
-    balance += deposit_amount;
-
-    // Unlock the mutex after updating the balance
-    pthread_mutex_unlock(&mutex);
-
-    return NULL;
-}
-
-// write the new balance (after as simulated 1/4 second delay)
-void write_balance(int new_balance)
+void init_philo(t_philo *philo)
 {
-  usleep(250000);
-  balance = new_balance;
+    philo->philo_id = 1;
+    philo->time_to_die = 2;
+    philo->time_to_eat = 3;
+    philo->time_to_sleep = 4;
+    philo->number_of_eats = 5;
 }
 
-int read_balance() {
-    return balance;
-}
-
-int main() {
-    pthread_t thread1;
-    pthread_t thread2;
-
-    // Initialize the mutex
-    pthread_mutex_init(&mutex, NULL);
-
-    // The deposit amounts... the correct total afterwards should be 500
-    int deposit1 = 300;
-    int deposit2 = 200;
-
-    // Create threads to run the deposit function with these deposit amounts
-    pthread_create(&thread1, NULL, deposit, (void*) &deposit1);
-    pthread_create(&thread2, NULL, deposit, (void*) &deposit2);
-
-    // Join the threads
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
-
-    // Destroy the mutex
-    pthread_mutex_destroy(&mutex);
-
-    // Output the balance after the deposits
-    int after = read_balance();
-    printf("After: %d\n", after);
-
-    return 0;
+int main(void)
+{
+    t_philo *philo;
+    
+    philo = (t_philo *)malloc(sizeof(t_philo));
+    init_philo(philo);
+    printf("philo_id: %d\n", philo->philo_id);
+    return (0);
 }
