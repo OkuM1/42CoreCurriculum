@@ -6,7 +6,7 @@
 #    By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 15:07:05 by mokutucu          #+#    #+#              #
-#    Updated: 2024/09/22 17:14:48 by mokutucu         ###   ########.fr        #
+#    Updated: 2024/09/25 17:14:18 by mokutucu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LDFLAGS = -lreadline
 RM      = rm -rf
 
 SRC_DIR = src
-SRCS    = src/main.c
+SRCS    = src/main.c src/ft_atoi.c
 
 OBJS    = $(patsubst $(SRC_DIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
