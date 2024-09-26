@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:15:26 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/25 23:19:29 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/09/26 21:33:11 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,38 @@
 
 # include <pthread.h>
 # include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
+# include <stdlib.h>
 # include <sys/time.h>
+# include <string.h>
 
-
+// Structure for a philosopher
 typedef struct s_philo
 {
-    int             philo_id;         // Philosopher ID
-    int             number_of_eats;   // Number of times the philosopher has eaten
-    int             time_to_die;
-    int             time_to_eat;
-    int             time_to_sleep;
-    pthread_t       thread;
-    pthread_mutex_t *left_fork;       // Pointer to the left fork (mutex)
-    pthread_mutex_t *right_fork;      // Pointer to the right fork (mutex)
+    int philo_id;
+    long long last_meal_time;
+    int number_of_meals;
+    pthread_mutex_t *left_fork;
+    pthread_mutex_t *right_fork;
+    pthread_t thread;
+    struct s_table *table;
 }               t_philo;
 
+// Structure for the table
 typedef struct s_table
 {
-    int             number_of_philosophers;
-    int             time_to_die;
-    int             time_to_eat;
-    int             time_to_sleep;
-    int             must_eats;
-    t_philo         *philo;           // Array of philosophers
-    pthread_mutex_t *forks;           // Array of fork mutexes
+    int number_of_philosophers;
+    long long time_to_die;  // Changed to long long
+    long long time_to_eat;  // Changed to long long
+    long long time_to_sleep; // Changed to long long
+    int must_eats;
+    int philosopher_died;
+    t_philo *philo;
 }               t_table;
 
-int     ft_atoi(const char *str);
-void    init_table(t_table *table, t_philo **philo, char **argv);
-void    create_threads(t_table *table, t_philo *philo);
+// Function prototypes
+long long get_time(void);
+int ft_atoi(const char *str);
+long long ft_atoll(const char *str);  // Added for long long conversion
 
 #endif
