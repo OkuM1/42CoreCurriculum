@@ -28,9 +28,12 @@ int validate_input(t_simulation *sim, int argc, char *argv[]) {
     if (argc == 6)
         sim->max_eat_count = ft_atoi(argv[5]);
     else 
-        sim->max_eat_count = 0;
+        sim->max_eat_count = -1;
+
+    if (argc == 6 && sim->max_eat_count < 0)
+        return (0);
     
-    return (sim->num_philosophers > 0 && sim->die_time >= 0 && sim->eat_time >= 0 && sim->sleep_time >= 0 && sim->max_eat_count >= 0);
+    return (sim->num_philosophers > 0 && sim->die_time >= 0 && sim->eat_time >= 0 && sim->sleep_time >= 0);
 }
 
 // Mutex initialization
@@ -54,7 +57,6 @@ int initialize_simulation(t_simulation *sim) {
     sim->all_fed = 0;
 
     int i = 0;
-    // Initialize each philosopher using a while loop
     while (i < sim->num_philosophers) {
         sim->philosopher_list[i].index = i + 1;
         sim->philosopher_list[i].meal_count = 0;

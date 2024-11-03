@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:15:26 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/11/03 16:51:02 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/03 22:47:46 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,18 @@ long get_time(); // Assumed to be defined elsewhere
 void new_sleep(int duration); // Assumed to be defined elsewhere
 int ft_isnumber(const char *str); // Assumed to be defined elsewhere
 int ft_atoi(const char *str); // Assumed to be defined elsewhere
+
+// Extended prototypes for new functions
+void action_print(t_philosopher *philo, const char *msg);
+void pick_forks(t_philosopher *philo, int left_fork, int right_fork);
+void put_forks(t_philosopher *philo, int left_fork, int right_fork);
+void eat(t_philosopher *philo);
+void sleep_and_think(t_philosopher *philo);
+int check_for_death(t_simulation *sim, long time_to_die);
+void announce_death(t_simulation *sim, int index, long current_time);
+void destroy_mutexes(t_simulation *sim);
+void free_dynamic_memory(t_simulation *sim);
+int create_philosopher_threads(t_simulation *sim);
+int create_monitor_thread(t_simulation *sim);
 
 #endif // PHILOSOPHERS_H
