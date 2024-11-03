@@ -6,47 +6,58 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:15:26 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/26 21:33:11 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:51:02 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef PHILOSOPHERS_H
+#define PHILOSOPHERS_H
 
-# include <pthread.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/time.h>
-# include <string.h>
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/time.h>
 
-// Structure for a philosopher
-typedef struct s_philo
-{
-    int philo_id;
-    long long last_meal_time;
-    int number_of_meals;
-    pthread_mutex_t *left_fork;
-    pthread_mutex_t *right_fork;
-    pthread_t thread;
-    struct s_table *table;
-}               t_philo;
+// Philosopher structure
+typedef struct s_philosopher {
+    int index;
+    int meal_count;
+    long last_meal_time;
+    pthread_t thread_id;
+    struct s_simulation *sim;
+    int left_fork;
+    int right_fork;
+} t_philosopher;
 
-// Structure for the table
-typedef struct s_table
-{
-    int number_of_philosophers;
-    long long time_to_die;  // Changed to long long
-    long long time_to_eat;  // Changed to long long
-    long long time_to_sleep; // Changed to long long
-    int must_eats;
-    int philosopher_died;
-    t_philo *philo;
-}               t_table;
+// Environment structure for managing philosophers
+typedef struct s_simulation {
+    int num_philosophers;
+    int die_time;
+    int eat_time;
+    int sleep_time;
+    int max_eat_count;
+    pthread_mutex_t *utensils;
+    pthread_mutex_t output_lock;
+    pthread_mutex_t meal_lock;
+    long start_time;
+    int is_over;
+    int all_fed;
+    t_philosopher *philosopher_list;
+} t_simulation;
 
 // Function prototypes
-long long get_time(void);
-int ft_atoi(const char *str);
-long long ft_atoll(const char *str);  // Added for long long conversion
+int main(int argc, char *argv[]);
+int validate_input(t_simulation *sim, int argc, char *argv[]);
+int initialize_utensils(t_simulation *sim);
+int allocate_resources(t_simulation *sim);
+void *philosopher_activity(void *params);
+int start_simulation(t_simulation *sim);
+void clean_up(t_simulation *sim);
+void *death_monitor(void *params);
+long get_time(); // Assumed to be defined elsewhere
+void new_sleep(int duration); // Assumed to be defined elsewhere
+int ft_isnumber(const char *str); // Assumed to be defined elsewhere
+int ft_atoi(const char *str); // Assumed to be defined elsewhere
 
-#endif
+#endif // PHILOSOPHERS_H
