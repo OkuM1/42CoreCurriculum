@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:36:45 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/11/04 22:53:35 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:55:01 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void	*philosopher_activity(void *params)
 
 	philo = (t_philosopher *)params;
 	if (philo->index == 0)
-    {
-        philo->left_fork = philo->index - 1;
-        philo->right_fork = philo->index % philo->sim->num_philosophers;
-    }
-    else
-    {
-        philo->left_fork = philo->index % philo->sim->num_philosophers;
-        philo->right_fork = philo->index - 1;
-    }
+	{
+		philo->left_fork = philo->index - 1;
+		philo->right_fork = philo->index % philo->sim->num_philosophers;
+	}
+	else
+	{
+		philo->left_fork = philo->index % philo->sim->num_philosophers;
+		philo->right_fork = philo->index - 1;
+	}
 	if (philo->sim->num_philosophers == 1)
 	{
 		action_print(philo, "has taken a fork");

@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:39:59 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/11/04 22:39:48 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/04 23:00:12 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	*death_monitor(void *params)
 
 void	check_for_death(t_simulation *sim, long long time_to_die)
 {
-	long long	current_time;
 	int			i;
 	int			all_fed;
 
@@ -38,12 +37,11 @@ void	check_for_death(t_simulation *sim, long long time_to_die)
 	while (i < sim->num_philosophers)
 	{
 		pthread_mutex_lock(&sim->meal_lock);
-		current_time = get_time();
-		if (current_time - 
+		if (get_time() - 
 			sim->philosopher_list[i].last_meal_time > time_to_die)
 		{
 			pthread_mutex_unlock(&sim->meal_lock);
-			announce_death(sim, i, current_time);
+			announce_death(sim, i, get_time());
 			return ;
 		}
 		if (sim->max_eat_count > 0 

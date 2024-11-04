@@ -44,7 +44,9 @@ int	initialize_utensils(t_simulation *sim)
 	int	i;
 
 	if (pthread_mutex_init(&sim->output_lock, NULL) 
-		|| pthread_mutex_init(&sim->meal_lock, NULL) || pthread_mutex_init(&sim->is_over_lock, NULL))
+		|| pthread_mutex_init(&sim->meal_lock, NULL))
+		return (1);
+	if (pthread_mutex_init(&sim->is_over_lock, NULL))
 		return (1);
 	i = 0;
 	while (i < sim->num_philosophers)
