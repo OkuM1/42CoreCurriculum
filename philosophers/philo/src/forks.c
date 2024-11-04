@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:38:26 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/11/04 19:06:26 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:42:06 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,33 @@
 
 void	pick_forks(t_philosopher *philo, int left_fork, int right_fork)
 {
-	pthread_mutex_lock(&philo->sim->utensils[left_fork]);
-	action_print(philo, "has taken a fork");
-	pthread_mutex_lock(&philo->sim->utensils[right_fork]);
-	action_print(philo, "has taken a fork");
+	if (philo->index % 2 == 0)  // Even-indexed philosopher
+	{
+		pthread_mutex_lock(&philo->sim->utensils[left_fork]);
+		action_print(philo, "has taken a fork");
+		pthread_mutex_lock(&philo->sim->utensils[right_fork]);
+		action_print(philo, "has taken a fork");
+	}
+	else  // Odd-indexed philosopher
+	{
+		pthread_mutex_lock(&philo->sim->utensils[right_fork]);
+		action_print(philo, "has taken a fork");
+		pthread_mutex_lock(&philo->sim->utensils[left_fork]);
+		action_print(philo, "has taken a fork");
+	}
 }
 
 void	put_forks(t_philosopher *philo, int left_fork, int right_fork)
 {
-	pthread_mutex_unlock(&philo->sim->utensils[right_fork]);
-	pthread_mutex_unlock(&philo->sim->utensils[left_fork]);
+	if (philo->index % 2 == 0)  // Even-indexed philosopher
+	{
+		pthread_mutex_unlock(&philo->sim->utensils[right_fork]);
+		pthread_mutex_unlock(&philo->sim->utensils[left_fork]);
+	}
+	else  // Odd-indexed philosopher
+	{
+		pthread_mutex_unlock(&philo->sim->utensils[left_fork]);
+		pthread_mutex_unlock(&philo->sim->utensils[right_fork]);
+	}
 }
+

@@ -44,7 +44,7 @@ int	initialize_utensils(t_simulation *sim)
 	int	i;
 
 	if (pthread_mutex_init(&sim->output_lock, NULL) 
-		|| pthread_mutex_init(&sim->meal_lock, NULL))
+		|| pthread_mutex_init(&sim->meal_lock, NULL) || pthread_mutex_init(&sim->is_over_lock, NULL))
 		return (1);
 	i = 0;
 	while (i < sim->num_philosophers)
@@ -72,10 +72,6 @@ int	initialize_simulation(t_simulation *sim)
 		sim->philosopher_list[i].meal_count = 0;
 		sim->philosopher_list[i].last_meal_time = get_time();
 		sim->philosopher_list[i].sim = sim;
-		/* if (i == 0)
-			sim->philosopher_list[i].left_fork = sim->num_philosophers - 1;
-		else
-			sim->philosopher_list[i].left_fork = i - 1; */
 		i++;
 	}
 	if (sim->num_philosophers <= 0)

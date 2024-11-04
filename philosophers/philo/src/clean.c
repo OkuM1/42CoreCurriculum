@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:38:58 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/11/04 20:04:29 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:12:03 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	destroy_mutexes(t_simulation *sim)
 	}
 	pthread_mutex_destroy(&sim->output_lock);
 	pthread_mutex_destroy(&sim->meal_lock);
+	pthread_mutex_destroy(&sim->is_over_lock);
 }
 
 void	free_dynamic_memory(t_simulation *sim)

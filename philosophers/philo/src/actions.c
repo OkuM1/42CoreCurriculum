@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:36:45 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/11/04 21:14:03 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:53:35 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	action_print(t_philosopher *philo, const char *str)
 
 	current_time = get_time() - philo->sim->start_time;
 	pthread_mutex_lock(&philo->sim->output_lock);
+	pthread_mutex_lock(&philo->sim->is_over_lock);
 	if (!philo->sim->is_over)
 		printf("%ld %d %s\n", current_time, philo->index, str);
+	pthread_mutex_unlock(&philo->sim->is_over_lock);
 	pthread_mutex_unlock(&philo->sim->output_lock);
 }
 
@@ -41,6 +43,7 @@ void	sleep_and_think(t_philosopher *philo)
 	action_print(philo, "is sleeping");
 	usleep(philo->sim->sleep_time * 1000);
 	action_print(philo, "is thinking");
+	usleep(500);
 }
 
 void	*philosopher_routine(t_philosopher *philo)
@@ -50,8 +53,13 @@ void	*philosopher_routine(t_philosopher *philo)
 	sim = philo->sim;
 	while (1)
 	{
+		pthread_mutex_lock(&sim->is_over_lock);
 		if (sim->is_over)
+		{
+			pthread_mutex_unlock(&sim->is_over_lock);
 			break ;
+		}
+		pthread_mutex_unlock(&sim->is_over_lock);
 		eat(philo);
 		sleep_and_think(philo);
 	}
@@ -63,8 +71,16 @@ void	*philosopher_activity(void *params)
 	t_philosopher	*philo;
 
 	philo = (t_philosopher *)params;
-	philo->left_fork = philo->index - 1;
-	philo->right_fork = philo->index % philo->sim->num_philosophers;
+	if (philo->index == 0)
+    {
+        philo->left_fork = philo->index - 1;
+        philo->right_fork = philo->index % philo->sim->num_philosophers;
+    }
+    else
+    {
+        philo->left_fork = philo->index % philo->sim->num_philosophers;
+        philo->right_fork = philo->index - 1;
+    }
 	if (philo->sim->num_philosophers == 1)
 	{
 		action_print(philo, "has taken a fork");
@@ -72,6 +88,6 @@ void	*philosopher_activity(void *params)
 		return (NULL);
 	}
 	if (philo->index % 2 == 0 && philo->sim->num_philosophers > 1)
-		usleep(philo->sim->eat_time * 200 / philo->sim->num_philosophers);
+		usleep(philo->sim->eat_time / 50);
 	return (philosopher_routine(philo));
 }

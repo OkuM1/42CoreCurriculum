@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 17:15:26 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/11/04 21:10:57 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/11/04 22:40:10 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_simulation
 	long			eat_time;
 	long			sleep_time;
 	long			max_eat_count;
+	pthread_mutex_t	is_over_lock;
 	pthread_mutex_t	*utensils;
 	pthread_mutex_t	output_lock;
 	pthread_mutex_t	meal_lock;
@@ -67,7 +68,7 @@ void		pick_forks(t_philosopher *philo, int left_fork, int right_fork);
 void		put_forks(t_philosopher *philo, int left_fork, int right_fork);
 void		eat(t_philosopher *philo);
 void		sleep_and_think(t_philosopher *philo);
-void		check_for_death(t_simulation *sim, long time_to_die);
+void		check_for_death(t_simulation *sim, long long time_to_die);
 void		announce_death(t_simulation *sim, int index, long current_time);
 void		destroy_mutexes(t_simulation *sim);
 void		free_dynamic_memory(t_simulation *sim);
