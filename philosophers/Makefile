@@ -6,7 +6,7 @@
 #    By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 15:07:05 by mokutucu          #+#    #+#              #
-#    Updated: 2024/11/03 20:40:24 by mokutucu         ###   ########.fr        #
+#    Updated: 2024/11/04 13:43:58 by mokutucu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LDFLAGS = -lreadline
 RM      = rm -rf
 
 SRC_DIR = src
-SRCS    = src/main.c src/utils.c src/sim.c
+SRCS    = src/actions.c src/clean.c src/forks.c src/ft_atoll.c src/main.c src/monitor.c src/sim.c src/utils.c
 
 OBJS    = $(patsubst $(SRC_DIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
