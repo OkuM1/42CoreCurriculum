@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afoth <afoth@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 19:43:12 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/17 23:29:46 by afoth            ###   ########.fr       */
+/*   Updated: 2024/09/22 16:03:20 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	built_in_env(t_shell *shell)
 	char	**env;
 
 	env = shell->env;
+	if (shell->cmds_head->args || shell->cmds_head->flags)
+	{
+		ft_putstr_fd("env: no options allowed\n", STDERR_FILENO);
+		return (1);
+	}
 	if (!env)
 	{
 		return (1);

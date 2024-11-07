@@ -6,7 +6,7 @@
 /*   By: afoth <afoth@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:55:31 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/20 20:01:32 by afoth            ###   ########.fr       */
+/*   Updated: 2024/09/22 14:47:30 by afoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	pipe_syntax(t_arg *head)
 	{
 		if (tmp->type == PIPE)
 		{
-			if (!tmp->next || !tmp->prev)
+			if (!tmp->next || !tmp->prev || tmp->next->type == END)
 			{
 				write (STDERR_FILENO,
 					"Syntax error: pipe '|' cannot be"

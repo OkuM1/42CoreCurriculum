@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afoth <afoth@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 16:09:46 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/21 16:05:35 by afoth            ###   ########.fr       */
+/*   Updated: 2024/09/22 16:11:00 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ t_TokenType	get_token_type(const char *arg)
 			return (typemap[i].type);
 		i++;
 	}
-	if (arg[0] == '-' && arg[1] != '\0' && isalpha((unsigned char)arg[1]))
-		return (FLAGS);
 	return (WORD);
 }
 

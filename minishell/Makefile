@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+         #
+#    By: afoth <afoth@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 15:07:05 by mokutucu          #+#    #+#              #
-#    Updated: 2024/09/24 13:12:40 by mokutucu         ###   ########.fr        #
+#    Updated: 2024/09/21 18:41:27 by afoth            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LDFLAGS = -lreadline
 RM      = rm -rf
 
 SRC_DIR = src
-SRCS    = src/error.c src/init.c src/main.c src/shlvl.c src/debug_main.c \
+SRCS    = src/error.c src/init.c src/main.c src/shlvl.c \
 		  src/0.garbage_collector/ft_gc_malloc.c \
 		  src/1.lexer/ft_shell_split.c src/1.lexer/ft_split_redir.c \
 		  src/1.lexer/lexer_utils.c src/1.lexer/split_redir_utils.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: afoth <afoth@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:17:05 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/24 13:24:17 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/09/19 01:11:49 by afoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #  define BUFFER_SIZE 1
 # endif
 
-# include <stddef.h>
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>

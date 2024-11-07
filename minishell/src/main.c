@@ -6,7 +6,7 @@
 /*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:58:44 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/24 13:24:26 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/09/22 16:12:01 by mokutucu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,11 @@ char	*get_input(t_shell *shell)
 	line = readline("minishell$ ");
 	if (line == NULL)
 	{
+		ft_gc_free(&shell->gc);
 		write(1, "exit\n", 5);
 		exit(0);
 	}
 	if (*line == '\0')
-	{
-		free(line);
-		return (NULL);
-	}
-	if (ft_quotes_not_closed(line))
 	{
 		free(line);
 		return (NULL);

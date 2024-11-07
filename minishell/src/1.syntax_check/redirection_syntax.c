@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_syntax.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: afoth <afoth@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:59:28 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/24 13:33:35 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:51:33 by afoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	redirection_input_syntax_check(t_arg *tmp)
 {
-	if (!tmp->next || !tmp->prev)
+	if (!tmp->next || !tmp->prev || tmp->next->type == END)
 	{
 		write_error("redirection input error:"
 			" no arguments before or after redirection", tmp->arg);
@@ -37,7 +37,7 @@ int	redirection_input_syntax_check(t_arg *tmp)
 
 int	redirection_output_syntax_check(t_arg *tmp)
 {
-	if (!tmp->next)
+	if (!tmp->next || tmp->next->type == END)
 	{
 		write_error("redirection output error:"
 			" no arguments before redirection", tmp->arg);

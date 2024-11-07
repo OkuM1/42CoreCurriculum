@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mokutucu <mokutucu@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: afoth <afoth@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:36:35 by mokutucu          #+#    #+#             */
-/*   Updated: 2024/09/24 13:24:08 by mokutucu         ###   ########.fr       */
+/*   Updated: 2024/09/21 16:08:03 by afoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,11 @@
 
 # include "../libs/libft/libft.h"
 
-# include <stddef.h>  // For size_t
 # include <stdlib.h>     // Standard C Library
 # include <stdio.h>      // Standard C Library
 # include <errno.h>      // Standard C Library
 # include <string.h>     // Standard C Library
 # include <stdbool.h>    // Standard C Library
-
-
 
 # include <unistd.h>     // POSIX Library
 # include <sys/types.h>  // POSIX Library
